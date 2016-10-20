@@ -13,4 +13,21 @@ class Student extends Model
         'phone',
         'address'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function studentParent()
+    {
+        return $this->belongsTo(StudentParent::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
