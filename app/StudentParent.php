@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class StudentParent extends Model
 {
@@ -11,7 +12,8 @@ class StudentParent extends Model
         'birthdate',
         'email',
         'phone',
-        'address'
+        'address',
+        'user_id',
     ];
 
     /**
@@ -28,5 +30,31 @@ class StudentParent extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return bool
+     */
+    public function createNewStudentParent(array $data)
+    {
+        $data['user_id'] = Auth::id();
+        $this->fill($data);
+
+        return $this->save();
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return bool
+     */
+    public function updateStudentParent(array $data)
+    {
+        $data['user_id'] = Auth::id();
+        $this->fill($data);
+
+        return $this->save();
     }
 }
