@@ -13,17 +13,21 @@
                     <div class="panel-body">
                         <table class="table">
                             <thead>
+                            <tr>
                             <td>ID #</td>
                             <td>Name</td>
                             <td>Email</td>
                             <td>Actions</td>
+                            </tr>
                             </thead>
                             <tbody>
                         @foreach($studentParents as $parent)
-                            <td>{{ $parent->id }}</td>
-                            <td>{{ $parent->name }}</td>
-                            <td>{{ $parent->email }}</td>
-                            <td><a href="{{ route('parents.edit', $parent) }}">edit</a></td>
+                            <tr>
+                                <td>{{ $parent->id }}</td>
+                                <td>{{ $parent->name }}</td>
+                                <td>{{ $parent->email }}</td>
+                                <td><a href="{{ route('parents.edit', $parent) }}">edit</a></td>
+                            </tr>
                         @endforeach
                             </tbody>
                         </table>
