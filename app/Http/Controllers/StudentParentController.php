@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\StudentParent;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
 
 class StudentParentController extends Controller
@@ -38,6 +36,7 @@ class StudentParentController extends Controller
     public function store(Requests\StudentParentCreateRequest $request, StudentParent $parent)
     {
         $parent->createNewStudentParent($request->all());
+
         return redirect()->route('parents.index');
     }
 
@@ -68,6 +67,7 @@ class StudentParentController extends Controller
     public function update(Requests\StudentParentUpdateRequest $request, StudentParent $parent)
     {
         $parent->updateStudentParent($request->all());
+
         return redirect()->route('parents.index');
     }
 
