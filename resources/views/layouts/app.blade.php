@@ -54,7 +54,7 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             <li><a href="{{ route('parents.index') }}">Parents</a></li>
-                            {{--<li><a href="{{ route('students.index') }}">Students</a></li>--}}
+                            <li><a href="{{ route('students.index') }}">Students</a></li>
                             {{--<li><a href="{{ route('employees.index') }}">Employees</a></li>--}}
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
