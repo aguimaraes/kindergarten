@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index');
 Route::resource('/parents', StudentParentController::class);
 
 Route::resource('/students', StudentController::class);
+
+Route::resource('/employees', EmployeeController::class);

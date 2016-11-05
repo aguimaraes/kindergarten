@@ -11,7 +11,8 @@ class Employee extends Model
         'birthdate',
         'email',
         'phone',
-        'address'
+        'address',
+        'user_id'
     ];
 
     /**
@@ -20,5 +21,27 @@ class Employee extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return bool
+     */
+    public function createNewEmployee(array $data)
+    {
+        return $this->fill($data)
+            ->save();
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return bool
+     */
+    public function updateEmployee(array $data)
+    {
+        return $this->fill($data)
+            ->save();
     }
 }
