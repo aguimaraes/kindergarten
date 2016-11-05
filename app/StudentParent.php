@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Auth\AuthManager;
 use Illuminate\Database\Eloquent\Model;
 
 class StudentParent extends Model
@@ -15,28 +14,6 @@ class StudentParent extends Model
         'address',
         'user_id',
     ];
-
-    /**
-     * @var AuthManager
-     */
-    private $authManager;
-
-    /**
-     * StudentParent constructor.
-     *
-     * @param array $attributes
-     * @param AuthManager $authManager
-     */
-    public function __construct(array $attributes = [], AuthManager $authManager = null)
-    {
-        parent::__construct($attributes);
-
-        if (empty($authManager)) {
-            $authManager = app()->make('auth');
-        }
-
-        $this->authManager = $authManager;
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -61,7 +38,6 @@ class StudentParent extends Model
      */
     public function createNewStudentParent(array $data)
     {
-        $data['user_id'] = $this->authManager->id();
         $this->fill($data);
 
         return $this->save();
@@ -74,7 +50,6 @@ class StudentParent extends Model
      */
     public function updateStudentParent(array $data)
     {
-        $data['user_id'] = $this->authManager->id();
         $this->fill($data);
 
         return $this->save();
