@@ -12,7 +12,11 @@ class EmployeeUpdateRequest extends AbstractRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|between:3,100',
+            'email' => 'required|max:120|email|unique:employees,email,' . $this->employee->id,
+            'birthdate' => 'required|date_format:Y-m-d',
+            'phone' => 'required|numeric|digits:14',
+            'address' => 'required|string|between:8,100',
         ];
     }
 }
